@@ -22,10 +22,18 @@ namespace PracticaMovimiento
     /// </summary>
     public partial class MainWindow : Window
     {
+        Stopwatch stopwatch;
+        TimeSpan tiempoAnterior;
+
         public MainWindow()
         {
             InitializeComponent();
             Canvas1.Focus();
+
+            stopwatch = new Stopwatch();
+            stopwatch.Start();
+            tiempoAnterior = stopwatch.Elapsed;
+
             //1.Establecer instrucciones
             ThreadStart threadStart = new ThreadStart(moverObjetos);
             //2.Inicializar el Thread
@@ -34,6 +42,8 @@ namespace PracticaMovimiento
             threadMoverObjetos.Start();
         }
 
+        
+
         void moverObjetos()
         {
             while (true)
@@ -41,14 +51,17 @@ namespace PracticaMovimiento
                 Dispatcher.Invoke(() =>
                 {
 
+                    var tiempoActual = stopwatch.Elapsed;
+                    var deltaTime = tiempoActual - tiempoAnterior;
+
                     double leftISSActual = Canvas.GetLeft(iss);
-                    Canvas.SetLeft(iss, leftISSActual - 0.001);
+                    Canvas.SetLeft(iss, leftISSActual - (90 * deltaTime.TotalSeconds));
 
                     if (Canvas.GetLeft(iss)<= - 251)
                     {
                         Canvas.SetLeft(iss, 800);
                     }
-
+                    tiempoAnterior = tiempoActual;
                 });
             }
         }
