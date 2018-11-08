@@ -61,6 +61,22 @@ namespace PracticaMovimiento
                     {
                         Canvas.SetLeft(iss, 800);
                     }
+
+
+                    //Intersección en X
+                    double xISS = Canvas.GetLeft(iss);
+                    double xNave = Canvas.GetLeft(nave);
+                    double yISS = Canvas.GetTop(iss);
+                    double yNave = Canvas.GetTop(nave);
+                    if (xNave >= xISS && xNave <= xISS + iss.Width && yNave >= yISS && yNave <= yISS + iss.Height)
+                    {
+                        lblColision.Text = "Colisión";
+                    }
+                    else
+                    {
+                        lblColision.Text = "No hay colisión";
+                    }
+
                     tiempoAnterior = tiempoActual;
                 });
             }
@@ -72,6 +88,21 @@ namespace PracticaMovimiento
             {
                 double topNaveActual = Canvas.GetTop(nave);
                 Canvas.SetTop(nave, topNaveActual - 15); //Esta funcion lleva dos parametros uno es el elemento que s está moviendo y el segundo la cantidad
+            }
+            if (e.Key == Key.Down)
+            {
+                double topNaveActual = Canvas.GetTop(nave);
+                Canvas.SetTop(nave, topNaveActual + 15); //Esta funcion lleva dos parametros uno es el elemento que s está moviendo y el segundo la cantidad
+            }
+            if (e.Key == Key.Left)
+            {
+                double horizontalNaveActual = Canvas.GetLeft(nave);
+                Canvas.SetLeft(nave, horizontalNaveActual - 15); //Esta funcion lleva dos parametros uno es el elemento que s está moviendo y el segundo la cantidad
+            }
+            if (e.Key == Key.Right)
+            {
+                double horizontalNaveActual = Canvas.GetLeft(nave);
+                Canvas.SetLeft(nave, horizontalNaveActual + 15); //Esta funcion lleva dos parametros uno es el elemento que s está moviendo y el segundo la cantidad
             }
         }
     }

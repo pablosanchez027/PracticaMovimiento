@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Canvas Name="Canvas1" KeyDown="Canvas1_KeyDown" Focusable="True">
-        <Image Name="nave" Source="C:\Users\alumno\Downloads\Practica-Movimiento-master\PracticaMovimiento\Space_Shuttle.png" Width="50" Canvas.Left="350" Canvas.Top="195"></Image>
-        <Image Name="iss" Source="C:\Users\alumno\Downloads\Practica-Movimiento-master\PracticaMovimiento\ISS.png" Canvas.Left="612" Canvas.Top="50" Height="100"></Image>
+        <Image Name="nave" Source="space_shuttle.png" Width="50" Canvas.Left="350" Canvas.Top="322"></Image>
+        <Image Name="iss" Source="iss.png" Canvas.Left="612" Canvas.Top="127" Height="100" Width="251"></Image>
+        <TextBlock Name="lblColision" Height="23" Canvas.Left="10" Text="No hay colisión" Canvas.Top="10" Width="145"/>
     </Canvas>
 </Window>
